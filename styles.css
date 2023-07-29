@@ -1,0 +1,113 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to top, #FF7D50, #FFC66E);
+    margin: 0;
+}
+
+.envelope-container {
+    position: relative;
+}
+
+.envelope {
+    width: 150px;
+    height: 100px;
+    background-color: #FFF;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    animation: openEnvelopeAnim 1s;
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.front:before, .back:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    position: absolute;
+}
+
+.front:before {
+    border-bottom: 50px solid #FFF;
+    top: 0;
+    left: 0;
+}
+
+.back:before {
+    border-top: 50px solid #FFF;
+    bottom: 0;
+    left: 0;
+}
+
+.message {
+    text-align: center;
+    color: #FFF;
+    font-size: 24px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s, transform 1s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden { display: none; }
+
+.cake-container {
+    position: relative;
+    perspective: 800px;
+}
+
+.cake {
+    width: 300px;
+    height: 400px;
+    background-image: radial-gradient(circle at 50% -40%, #FFA07A, #FF7F50);
+    border-radius: 50% 50% 5% 5%;
+    transform: rotateX(45deg);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.candle {
+    width: 15px;
+    height: 120px;
+    background-color: #FFF;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-style: preserve-3d;
+    animation: candleMove 1.5s infinite;
+}
+
+#candle1 { transform: translateX(-120px) rotateX(20deg); }
+#candle2 { transform: translateX(-80px) rotateX(10deg); }
+#candle3 { transform: translateX(-40px); }
+#candle4 { transform: translateX(40px); }
+#candle5 { transform: translateX(80px) rotateX(-10deg); }
+
+@keyframes candleMove {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes openEnvelopeAnim {
+    0% { transform: rotateX(0); }
+    100% { transform: rotateX(180deg); }
+}
